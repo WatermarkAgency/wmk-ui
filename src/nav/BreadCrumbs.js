@@ -17,7 +17,7 @@ const Wrap = styled.div`
     background: none;
     height: 1.1rem;
     padding: 0;
-    color: ${colors.hex("primary")};
+    color: ${({ colors }) => colors.hex("primary")};
     :hover {
       text-decoration: underline;
     }

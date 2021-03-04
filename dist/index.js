@@ -1206,7 +1206,7 @@ function _taggedTemplateLiteralLoose(strings, raw) {
   return strings;
 }
 
-var colors$1 = new wmkColorPalette.ColorPalette([{
+var colors = new wmkColorPalette.ColorPalette([{
   value: "#fefefe",
   group: "white",
   reverse: true
@@ -1270,7 +1270,7 @@ GalleryTitle.propTypes = {
   colors: PropTypes.object
 };
 GalleryTitle.defaultProps = {
-  colors: colors$1
+  colors: colors
 };
 
 var _templateObject$1, _templateObject2, _templateObject3, _templateObject4, _templateObject5;
@@ -1360,13 +1360,16 @@ TileHover.defaultProps = {
 };
 
 var _templateObject$3, _templateObject2$2;
-var Wrap = styled.div(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteralLoose(["\n  display: flex;\n  * {\n    margin-right: 15px;\n    font-size: 0.75rem;\n    font-weight: 300;\n  }\n  button {\n    border: none;\n    background: none;\n    height: 1.1rem;\n    padding: 0;\n    color: ", ";\n    :hover {\n      text-decoration: underline;\n    }\n  }\n  img {\n    width: 10px;\n    height: 15px;\n    position: relative;\n    top: 2px;\n  }\n"])), colors.hex("primary"));
+var Wrap = styled.div(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteralLoose(["\n  display: flex;\n  * {\n    margin-right: 15px;\n    font-size: 0.75rem;\n    font-weight: 300;\n  }\n  button {\n    border: none;\n    background: none;\n    height: 1.1rem;\n    padding: 0;\n    color: ", ";\n    :hover {\n      text-decoration: underline;\n    }\n  }\n  img {\n    width: 10px;\n    height: 15px;\n    position: relative;\n    top: 2px;\n  }\n"])), function (_ref) {
+  var colors = _ref.colors;
+  return colors.hex("primary");
+});
 var CurrentTitle = styled.p(_templateObject2$2 || (_templateObject2$2 = _taggedTemplateLiteralLoose(["\n  color: green;\n  text-decoration: underline;\n"])));
-var BreadCrumbs = function BreadCrumbs(_ref) {
-  var root = _ref.root,
-      paths = _ref.paths,
-      current = _ref.current,
-      Separator = _ref.Separator;
+var BreadCrumbs = function BreadCrumbs(_ref2) {
+  var root = _ref2.root,
+      paths = _ref2.paths,
+      current = _ref2.current,
+      Separator = _ref2.Separator;
   return /*#__PURE__*/React.createElement(Wrap, null, root ? /*#__PURE__*/React.createElement(BreadCrumbLink, {
     to: get_1(root, "to"),
     target: get_1(root, "target")
@@ -1390,21 +1393,21 @@ BreadCrumbs.propTypes = {
   colors: PropTypes.object
 };
 BreadCrumbs.defaultProps = {
-  colors: colors$1
+  colors: colors
 };
 
-var BreadCrumbCurrent = function BreadCrumbCurrent(_ref2) {
-  var children = _ref2.children,
-      Separator = _ref2.Separator;
+var BreadCrumbCurrent = function BreadCrumbCurrent(_ref3) {
+  var children = _ref3.children,
+      Separator = _ref3.Separator;
   return children ? /*#__PURE__*/React.createElement(React.Fragment, null, Separator ? /*#__PURE__*/React.createElement(Separator, null) : /*#__PURE__*/React.createElement("span", null, "|"), /*#__PURE__*/React.createElement(CurrentTitle, null, children)) : null;
 };
 
-var BreadCrumbLink = function BreadCrumbLink(_ref3) {
-  var Separator = _ref3.Separator,
-      seperate = _ref3.seperate,
-      to = _ref3.to,
-      target = _ref3.target,
-      children = _ref3.children;
+var BreadCrumbLink = function BreadCrumbLink(_ref4) {
+  var Separator = _ref4.Separator,
+      seperate = _ref4.seperate,
+      to = _ref4.to,
+      target = _ref4.target,
+      children = _ref4.children;
   return /*#__PURE__*/React.createElement(React.Fragment, null, seperate ? Separator ? /*#__PURE__*/React.createElement(Separator, null) : /*#__PURE__*/React.createElement("span", null, "|") : null, /*#__PURE__*/React.createElement(wmkLib.WMKLink, {
     to: to,
     target: target
