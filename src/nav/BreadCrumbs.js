@@ -37,7 +37,7 @@ const CurrentTitle = styled.p`
 
 export const BreadCrumbs = ({ root, paths, current, Separator, colors }) => {
   return (
-    <Wrap>
+    <Wrap colors={colors}>
       {root ? (
         <BreadCrumbLink to={get(root, "to")} target={get(root, "target")}>
           {get(root, "text")}

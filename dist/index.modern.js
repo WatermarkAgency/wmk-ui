@@ -1367,8 +1367,11 @@ var BreadCrumbs = function BreadCrumbs(_ref2) {
   var root = _ref2.root,
       paths = _ref2.paths,
       current = _ref2.current,
-      Separator = _ref2.Separator;
-  return /*#__PURE__*/React.createElement(Wrap, null, root ? /*#__PURE__*/React.createElement(BreadCrumbLink, {
+      Separator = _ref2.Separator,
+      colors = _ref2.colors;
+  return /*#__PURE__*/React.createElement(Wrap, {
+    colors: colors
+  }, root ? /*#__PURE__*/React.createElement(BreadCrumbLink, {
     to: get_1(root, "to"),
     target: get_1(root, "target")
   }, get_1(root, "text")) : null, paths && paths.length ? paths.map(function (path, i) {
