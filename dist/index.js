@@ -6,7 +6,7 @@ var styled = _interopDefault(require('styled-components'));
 var PropTypes = _interopDefault(require('prop-types'));
 var wmkColorPalette = require('wmk-color-palette');
 var wmkLib = require('wmk-lib');
-require('react-icons/fa');
+var fa = require('react-icons/fa');
 
 /**
  * Checks if `value` is classified as an `Array` object.
@@ -1258,6 +1258,21 @@ var Title = styled.h4(_templateObject || (_templateObject = _taggedTemplateLiter
   return colors.hex("primary");
 });
 
+var GalleryTitle = function GalleryTitle(_ref2) {
+  var children = _ref2.children,
+      colors = _ref2.colors;
+  return /*#__PURE__*/React.createElement(Title, {
+    colors: colors
+  }, children);
+};
+GalleryTitle.propTypes = {
+  children: PropTypes.node.isRequired,
+  colors: PropTypes.object
+};
+GalleryTitle.defaultProps = {
+  colors: colors$1
+};
+
 var _templateObject$1, _templateObject2, _templateObject3, _templateObject4, _templateObject5;
 var StyledTitle = styled.div(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteralLoose(["\n  position: absolute;\n  z-index: 3;\n  height: 100%;\n  text-transform: uppercase;\n  font-size: 0.8rem;\n  color: white;\n  border: none;\n  display: inline-block;\n  padding: 0.5rem;\n  text-align: left;\n  width: 100%;\n  top: 0;\n  left: 0;\n"])));
 var WrapCol = styled(reactBootstrap.Col)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n  margin-top: 0.5rem;\n  margin-bottom: 0.5rem;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  height: ", "px;\n  :hover {\n    .cat-overlay {\n      background: rgb(0, 0, 0);\n      transition: all 0.3s ease;\n      background: linear-gradient(\n        180deg,\n        rgba(0, 0, 0, 0.6) 0%,\n        rgba(0, 0, 0, 0) 60%\n      );\n    }\n  }\n"])), function (_ref) {
@@ -1267,6 +1282,31 @@ var WrapCol = styled(reactBootstrap.Col)(_templateObject2 || (_templateObject2 =
 var StyledOverlay = styled.div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteralLoose(["\n  position: absolute;\n  z-index: 2;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: rgb(0, 0, 0);\n  background: linear-gradient(\n    180deg,\n    rgba(0, 0, 0, 0.6) 0%,\n    rgba(0, 0, 0, 0) 40%\n  );\n  transition: all 0.3s ease;\n"])));
 var StyledLink = styled(wmkLib.WMKLink)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteralLoose(["\n  position: absolute;\n  top: 0;\n  left: 0;\n  margin: 0 0.5rem;\n"])));
 var StyledBg = styled.img(_templateObject5 || (_templateObject5 = _taggedTemplateLiteralLoose(["\n  position: relative;\n  object-fit: cover;\n  max-width: 100%;\n  z-index: 1;\n"])));
+
+var TileCategory = function TileCategory(_ref2) {
+  var tag = _ref2.tag,
+      height = _ref2.height,
+      width = _ref2.width;
+  var bg = tag.bg,
+      title = tag.title,
+      slug = tag.slug;
+  return /*#__PURE__*/React.createElement(WrapCol, {
+    lg: 3,
+    md: 6,
+    height: height
+  }, /*#__PURE__*/React.createElement(StyledLink, {
+    to: slug,
+    height: height,
+    width: width
+  }, /*#__PURE__*/React.createElement(StyledBg, {
+    height: height,
+    width: width,
+    src: bg,
+    alt: title
+  }), /*#__PURE__*/React.createElement(StyledTitle, null, title), /*#__PURE__*/React.createElement(StyledOverlay, {
+    className: "cat-overlay"
+  })));
+};
 
 var _templateObject$2, _templateObject2$1, _templateObject3$1, _templateObject4$1, _templateObject5$1;
 var BGImg = styled.img(_templateObject$2 || (_templateObject$2 = _taggedTemplateLiteralLoose(["\n  height: ", ";\n  object-fit: cover;\n  width: 100%;\n  position: relative;\n  top: 0;\n  left: 0;\n"])), function (_ref) {
@@ -1278,10 +1318,50 @@ var HoverTitle = styled.span(_templateObject3$1 || (_templateObject3$1 = _tagged
 var Overlay = styled.div(_templateObject4$1 || (_templateObject4$1 = _taggedTemplateLiteralLoose(["\n  z-index: 2;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  background: rgb(0, 0, 0);\n  background: linear-gradient(\n    180deg,\n    rgba(0, 0, 0, 0.6) 0%,\n    rgba(0, 0, 0, 0) 70%\n  );\n  transition: all 0.5s ease;\n  :hover {\n    transition: all 0.5s ease;\n    background: linear-gradient(\n      180deg,\n      rgba(0, 0, 0, 0.3) 0%,\n      rgba(0, 0, 0, 0) 50%\n    );\n  }\n"])));
 var PlayIconWrap = styled.div(_templateObject5$1 || (_templateObject5$1 = _taggedTemplateLiteralLoose(["\n  position: absolute;\n  z-index: 3;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  svg {\n    font-size: 6vh;\n    color: white;\n    opacity: 0.8;\n  }\n"])));
 
+var PlayIcon = function PlayIcon(_ref2) {
+  var children = _ref2.children;
+  return /*#__PURE__*/React.createElement(PlayIconWrap, null, children);
+};
+
+var TileHover = function TileHover(_ref3) {
+  var bg = _ref3.bg,
+      title = _ref3.title,
+      to = _ref3.to,
+      width = _ref3.width,
+      height = _ref3.height,
+      type = _ref3.type,
+      target = _ref3.target;
+  return /*#__PURE__*/React.createElement(reactBootstrap.Col, {
+    lg: 3,
+    md: 6
+  }, /*#__PURE__*/React.createElement(HoverLink, {
+    to: to,
+    target: target,
+    width: width,
+    height: height
+  }, bg ? /*#__PURE__*/React.createElement(BGImg, {
+    src: bg,
+    alt: title,
+    width: width,
+    height: height
+  }) : null, /*#__PURE__*/React.createElement(HoverTitle, null, title), /*#__PURE__*/React.createElement(Overlay, null), type === "video" ? /*#__PURE__*/React.createElement(PlayIcon, null, /*#__PURE__*/React.createElement(fa.FaPlayCircle, null)) : null));
+};
+TileHover.propTypes = {
+  bg: PropTypes.string,
+  title: PropTypes.string,
+  to: PropTypes.string,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  type: PropTypes.string
+};
+TileHover.defaultProps = {
+  width: 350,
+  height: 175
+};
+
 var _templateObject$3, _templateObject2$2;
 var Wrap = styled.div(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteralLoose(["\n  display: flex;\n  * {\n    margin-right: 15px;\n    font-size: 0.75rem;\n    font-weight: 300;\n  }\n  button {\n    border: none;\n    background: none;\n    height: 1.1rem;\n    padding: 0;\n    color: ", ";\n    :hover {\n      text-decoration: underline;\n    }\n  }\n  img {\n    width: 10px;\n    height: 15px;\n    position: relative;\n    top: 2px;\n  }\n"])), colors.hex("primary"));
 var CurrentTitle = styled.p(_templateObject2$2 || (_templateObject2$2 = _taggedTemplateLiteralLoose(["\n  color: green;\n  text-decoration: underline;\n"])));
-
 var BreadCrumbs = function BreadCrumbs(_ref) {
   var root = _ref.root,
       paths = _ref.paths,
@@ -1302,7 +1382,6 @@ var BreadCrumbs = function BreadCrumbs(_ref) {
     Separator: Separator
   }, current));
 };
-
 BreadCrumbs.propTypes = {
   root: PropTypes.object,
   paths: PropTypes.array,
@@ -1331,4 +1410,75 @@ var BreadCrumbLink = function BreadCrumbLink(_ref3) {
     target: target
   }, children));
 };
+
+var MediaGallery = function MediaGallery(_ref) {
+  var media = _ref.media,
+      init = _ref.init,
+      tileHeight = _ref.tileHeight,
+      tileWidth = _ref.tileWidth,
+      Breadcrumbs = _ref.Breadcrumbs,
+      crumbs = _ref.crumbs;
+  var hash = media.hash,
+      arr = media.arr;
+  var key = get_1(init, "slug");
+  var galleryTitle = get_1("init", "title");
+  return /*#__PURE__*/React.createElement(reactBootstrap.Container, null, Breadcrumbs ? /*#__PURE__*/React.createElement(reactBootstrap.Row, null, /*#__PURE__*/React.createElement(reactBootstrap.Col, null, /*#__PURE__*/React.createElement(Breadcrumbs, {
+    root: get_1(crumbs, "root"),
+    paths: get_1(crumbs, "paths"),
+    current: get_1(crumbs, "current")
+  }))) : null, galleryTitle ? /*#__PURE__*/React.createElement(reactBootstrap.Row, null, /*#__PURE__*/React.createElement(reactBootstrap.Col, null, /*#__PURE__*/React.createElement(GalleryTitle, null, galleryTitle))) : null, /*#__PURE__*/React.createElement(reactBootstrap.Row, null, !init ? arr.map(function (category) {
+    var media = category.media,
+        slug = category.slug,
+        title = category.title,
+        bg = category.bg,
+        key = category.key;
+    return slug !== "general" ? /*#__PURE__*/React.createElement(TileCategory, {
+      media: media,
+      key: slug,
+      tag: category,
+      title: title,
+      bg: bg,
+      width: tileWidth,
+      height: tileHeight,
+      objKey: key
+    }) : null;
+  }) : init && hash[key] && hash[key].map(function (med, i) {
+    var type = med.type,
+        title = med.title,
+        to = med.to,
+        bg = med.bg;
+    return /*#__PURE__*/React.createElement(TileHover, {
+      key: "media" + i,
+      bg: bg,
+      type: type,
+      title: title,
+      to: to,
+      width: tileWidth,
+      height: tileHeight
+    });
+  })));
+};
+MediaGallery.propTypes = {
+  media: PropTypes.object.isRequired,
+  init: PropTypes.object,
+  tileHeight: PropTypes.number,
+  tileWidth: PropTypes.number,
+  crumbs: PropTypes.object
+};
+MediaGallery.defaultProps = {
+  tileHeight: 175,
+  tileWidth: 350,
+  Breadcrumbs: BreadCrumbs,
+  crumbs: {
+    root: {
+      to: "/",
+      text: "Home"
+    },
+    paths: [],
+    current: false
+  }
+};
+
+exports.BreadCrumbs = BreadCrumbs;
+exports.MediaGallery = MediaGallery;
 //# sourceMappingURL=index.js.map

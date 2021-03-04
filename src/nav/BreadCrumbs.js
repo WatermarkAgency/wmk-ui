@@ -35,7 +35,7 @@ const CurrentTitle = styled.p`
   text-decoration: underline;
 `;
 
-const BreadCrumbs = ({ root, paths, current, Separator, colors }) => {
+export const BreadCrumbs = ({ root, paths, current, Separator, colors }) => {
   return (
     <Wrap>
       {root ? (
@@ -94,5 +94,3 @@ const BreadCrumbLink = ({ Separator, seperate, to, target, children }) => {
     </React.Fragment>
   );
 };
-
-export default BreadCrumbs;

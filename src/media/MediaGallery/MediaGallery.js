@@ -5,9 +5,9 @@ import MGTitle from "./GalleryTitle";
 import TileCategory from "./TileCategory";
 import TileHover from "./TileHover";
 import PropTypes from "prop-types";
-import DefaultCrumbs from "../../nav/BreadCrumb";
+import { BreadCrumbs as DefaultCrumbs } from "../../nav/BreadCrumbs";
 
-const MediaGallery = ({
+export const MediaGallery = ({
   media,
   init,
   tileHeight,
@@ -76,8 +76,6 @@ const MediaGallery = ({
     </Container>
   );
 };
-
-export default MediaGallery;
 
 MediaGallery.propTypes = {
   media: PropTypes.object.isRequired,
